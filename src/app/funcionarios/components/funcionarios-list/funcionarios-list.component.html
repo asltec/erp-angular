@@ -1,0 +1,48 @@
+<table mat-table [dataSource]="funcionarios" class="mat-elevation-z8">
+
+  <ng-container matColumnDef="id_funcionario">
+      <th class="text-center" mat-header-cell *matHeaderCellDef> Código </th>
+      <td class="text-center" mat-cell *matCellDef="let element"> {{element.id_funcionario}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="nome">
+      <th class="text-center" mat-header-cell *matHeaderCellDef> Nome </th>
+      <td class="text-center" mat-cell *matCellDef="let element"> {{element.nome}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="cpf">
+      <th class="text-center" mat-header-cell *matHeaderCellDef> CPF </th>
+      <td class="text-center" mat-cell *matCellDef="let element"> {{element.cpf}} </td>
+    </ng-container>
+  
+
+    <ng-container matColumnDef="status">
+      <th class="text-center" mat-header-cell *matHeaderCellDef> Status </th>
+      <td class="text-center" mat-cell *matCellDef="let element"> {{element.status}}</td>
+    </ng-container>
+  
+    <ng-container matColumnDef="acoes">
+      <th class="text-center" mat-header-cell *matHeaderCellDef> Ações </th>
+      <td class="text-center" mat-cell *matCellDef="let element"> 
+        <button mat-icon-button color="primary" (click)="editar.emit(element.id_funcionario)">
+          <mat-icon>edit</mat-icon>
+        </button>
+        <button mat-icon-button color="warn" (click)="remover.emit(element.id_funcionario)">
+          <mat-icon>delete</mat-icon>
+        </button>
+        <button mat-icon-button (click)="detalhes.emit(element)">
+          <mat-icon>search</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+
+
+
+
+
+

@@ -1,0 +1,11 @@
+<app-totalizador [adicaoRegistros]="true" (cliqueBotao)="facade.acessarRotaCadastro()"
+    (totalRegistros)="facade.quantidadeRegistros$">
+</app-totalizador>
+
+<h2>Listagem de Clientes</h2>
+
+<app-clientes-list [clientes]="facade.clientes$ | async" (editar)="facade.acessarRotaEdicao($event)"
+    (remover)="facade.excluir($event)" (detalhes)="openDialog($event)">
+</app-clientes-list>
+
+<app-cliente-detalhes *ngIf="isModal"></app-cliente-detalhes>

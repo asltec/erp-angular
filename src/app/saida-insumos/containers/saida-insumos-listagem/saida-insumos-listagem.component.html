@@ -1,0 +1,14 @@
+<app-totalizador 
+    [adicaoRegistros]="true" 
+    (cliqueBotao)="facade.acessarRotaCadastro()"
+    (totalRegistros)="facade.quantidadeRegistros$">
+
+</app-totalizador>
+
+<h2>Listagem de Saída de Insumos</h2>
+
+<app-saida-insumos-list 
+    [saidaInsumos]="facade.saidaInsumos$ | async" 
+    (editar)="facade.acessarRotaEdicao($event)"
+    (remover)="facade.excluir($event)">
+</app-saida-insumos-list>

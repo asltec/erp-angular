@@ -1,0 +1,195 @@
+<mat-card-content>
+    <mat-card-title>Dados Gerais</mat-card-title>
+    <form [formGroup]="vendasForm">
+        <mat-card>
+            <mat-form-field class="form-field col-md-4">
+                <mat-label>Cliente</mat-label>
+                <select matNativeControl formControlName="id_cliente">
+                    <!-- <option *ngFor="let cliente of clientes$ | async"[value]="cliente.id_cliente">
+                           {{cliente.id_cliente}} - {{cliente.nome}}
+                        </option> -->
+                </select>
+            </mat-form-field>
+
+            <mat-form-field class="form-field col-md-4">
+                <mat-label>Vendedor/Responsável</mat-label>
+                <select matNativeControl formControlName="id_funcionario">
+                    <!-- <option *ngFor="let cliente of clientes$ | async"[value]="cliente.id_cliente">
+                           {{cliente.id_cliente}} - {{cliente.nome}}
+                        </option> -->
+                </select>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill" class="form-field col-md-3">
+                <mat-label>Data</mat-label>
+                <input matInput [matDatepicker]="data_venda" formControlName="data_venda">
+                <mat-datepicker-toggle matSuffix [for]="data_venda"></mat-datepicker-toggle>
+                <mat-datepicker #data_venda></mat-datepicker>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill" class="form-field col-md-3">
+                <mat-label>Data Entrega</mat-label>
+                <input matInput [matDatepicker]="data_entrega" formControlName="data_entrega">
+                <mat-datepicker-toggle matSuffix [for]="data_entrega"></mat-datepicker-toggle>
+                <mat-datepicker #data_entrega></mat-datepicker>
+            </mat-form-field>
+
+            <mat-form-field class="form-field col-md-4">
+                <mat-label>Situação</mat-label>
+                <select matNativeControl formControlName="situacao">
+                    <option value="Em Aberto">Em Aberto</option>
+                    <option value="Concretizada">Concretizada</option>
+                    <option value="Cancelada">Cancelada</option>
+                </select>
+            </mat-form-field>
+
+            <mat-form-field class="form-field col-md-4">
+                <mat-label>Canal de Venda</mat-label>
+                <select matNativeControl formControlName="canal_venda">
+                    <option value="Internet">Internet</option>
+                    <option value="Presencial">Presencial</option>
+                    <option value="Telemarketing">Telemarketing</option>
+                </select>
+            </mat-form-field>
+        </mat-card>
+
+        <div class="card-generico">
+            <mat-card-title>Produtos</mat-card-title>
+            <mat-card>
+                <form [formGroup]="itemsVendaForm">
+                    <table class="table table-border" [ngClass]="{'table-dark': mode}">
+                        <thead class="text-nowrap">
+                            <th class="text-center">Produto <span class="ui-column-resizer" dragableColumn> </span></th>
+                            <th class="text-center">Quantidade<span class="ui-column-resizer" dragableColumn> </span>
+                            </th>
+                            <th class="text-center">valor<span class="ui-column-resizer" dragableColumn> </span></th>
+                            <th class="text-center">Sub-Total<span class="ui-column-resizer" dragableColumn> </span>
+                            </th>
+                            <th class="text-center">Del<span class="ui-column-resizer" dragableColumn> </span></th>
+                            <th></th>
+                        </thead>
+                        <tbody>
+                            <ng-container formArrayName="tableRows"
+                                *ngFor="let group of getFormControls.controls ; let i=index">
+                                <tr *ngIf="group.get('isEditable').value" [formGroupName]="i">
+                                    <td class="text-center">
+                                        <mat-form-field>
+                                            <select class="form-control" matNativeControl formControlName="id_produto">
+                                                <option *ngFor="let produto of produtos$| async"
+                                                    [value]="produto.id_produto"
+                                                    (change)="getSelectedOptionText($event)">
+                                                    {{produto.descricao}}
+                                                </option>
+                                            </select>
+                                        </mat-form-field>
+                                    </td>
+                                    <td class="text-center">
+                                        <mat-form-field>
+                                            <input matInput type="number" formControlName="quantidade">
+                                        </mat-form-field>
+                                    </td>
+
+                                    <td class="text-center">
+                                        <mat-form-field>
+                                            <input matInput type="text" formControlName="valor_unitario">
+                                        </mat-form-field>
+                                    </td>
+
+                                    <td class="text-center">
+                                        <mat-form-field>
+                                            <input matInput type="text" formControlName="subtotal">
+                                        </mat-form-field>
+                                    </td>
+
+                                    <td class="text-center">
+                                        <button mat-icon-button (click)="deleteRow(i)">
+                                            <mat-icon>delete</mat-icon>
+                                        </button>
+                                    </td>
+                                </tr>
+                                <tr *ngIf="!group.get('isEditable').value">
+                                    <td>
+                                        {{group.get('name').value}}
+                                    </td>
+                                    <td>
+                                        {{group.get('email').value}}
+                                    </td>
+                                    <td>
+                                        {{group.get('email').value}}
+                                    </td>
+                                    <td>
+                                        {{group.get('bloodGroup').value}}
+                                    </td>
+                                    <td>
+                                        {{group.get('mobNumber').value}}
+                                    </td>
+                                    <td>
+                                        <mat-icon class="edit" (click)="editRow(group)">edit</mat-icon>
+                                    </td>
+                                </tr>
+                            </ng-container>
+                        </tbody>
+                    </table>
+                    <div class="action-container">
+                        <button mat-raised-button type="submit" (click)="addRow()">Adicionar Produto</button>
+                    </div>
+                </form>
+            </mat-card>
+        </div>
+
+        <div class="card-generico">
+            <mat-card-title>Total</mat-card-title>
+            <mat-card>
+                <mat-form-field>
+                    <input matInput type="text">
+                </mat-form-field>
+
+            </mat-card>
+        </div>
+
+        <div class="card-generico">
+            <mat-card-title>Formas de pagamento</mat-card-title>
+            <mat-card>
+                <form [formGroup]="vendasForm">
+                    <mat-form-field appearance="fill" class="form-field col-md-3">
+                        <mat-label>Data Vencimento</mat-label>
+                        <input matInput [matDatepicker]="data_vencimento" formControlName="data_vencimento">
+                        <mat-datepicker-toggle matSuffix [for]="data_vencimento"></mat-datepicker-toggle>
+                        <mat-datepicker #data_vencimento></mat-datepicker>
+                    </mat-form-field>
+
+                    <mat-form-field class="form-field col-md-3">
+                        <mat-label>Forma de Pagamento</mat-label>
+                        <select matNativeControl formControlName="forma_pagamento">
+                            <option value="Boleto">Boleto Bancário</option>
+                            <option value="CartaoCredito">Cartão de Crédito</option>
+                            <option value="CartaoDebito">Cartão de Débito</option>
+                            <option value="Dinheiro">Dinheiro</option>
+                            <option value="Dinheiro">Cheque</option>
+                        </select>
+                    </mat-form-field>
+                </form>
+
+            </mat-card>
+        </div>
+        <div class="card-generico">
+            <form>
+                <mat-card-title>Observações</mat-card-title>
+            <mat-card>
+                <mat-form-field>
+                    <mat-label>Observações</mat-label>
+                    <textarea 
+                    matInput
+                    cdkTextareaAutosize
+                    cdkAutosizeMinRows="10"
+                    cdkAutosizeMaxRows="50"></textarea>
+                </mat-form-field>
+            </mat-card>
+            </form>
+        </div>
+        <div>
+            <button mat-raised-button color="primary" type="submit">Gravar</button>
+        </div>
+    </form>
+
+</mat-card-content>

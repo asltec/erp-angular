@@ -1,0 +1,16 @@
+<div>
+    <app-totalizador 
+        [adicaoRegistros]="true" 
+        (cliqueBotao)="facade.acessarRotaCadastro()"
+        (totalRegistros)="facade.quantidadeRegistros$">
+
+    </app-totalizador>
+    <h2>Listagem de Contas à Pagar</h2>
+    <div>
+        <app-contas-pagar-list 
+            [contasPagar]="facade.contasPagar$ | async" 
+            (editar)="facade.acessarRotaEdicao($event)"
+            (remover)="facade.excluir($event)">
+        </app-contas-pagar-list>
+    </div>
+</div>

@@ -1,0 +1,70 @@
+<div class="form-container">
+    <form [formGroup]="produtoForm" (submit)="onSubmit()">
+        <script src="angular-input-masks-standalone.min.js"></script>
+
+        <div class="row">
+
+            <mat-form-field class="form-field col-md-4">
+                <mat-label>Descrição Produto</mat-label>
+                <input matInput formControlName="descricao">
+                <mat-error>
+                    Descrição do produto obrigatório
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="form-field col-md-4">
+                <mat-label>Unidade</mat-label>
+                <select matNativeControl formControlName="unidade">
+                    <option value="UN">UN</option>
+                    <option value="LT">LT</option>
+                </select>
+            </mat-form-field>
+
+            <mat-form-field class="form-field col-md-4">
+                <mat-label>Quantidade</mat-label>
+                <input matInput formControlName="quantidade">
+                <mat-error>
+                    Quantidade Obrigatória
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="form-field col-md-4">
+                <mat-label>Valor Custo</mat-label>
+                <input 
+                    matInput 
+                    formControlName="valor_custo" 
+                    currencyMask [options]=" { prefix: '', thousands: '.', decimal: ',', allowNegative: false }">
+                <mat-error>
+                    Valor de Custo Obrigatório
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="form-field col-md-4">
+                <mat-label>Valor Venda</mat-label>
+                <input 
+                    matInput 
+                    formControlName="valor_venda"
+                    currencyMask [options]=" { prefix: '', thousands: '.', decimal: ',', allowNegative: false }">
+                <mat-error>
+                    Valor de Venda Obrigatório
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="form-field col-md-4">
+                <mat-label>Status</mat-label>
+                <select matNativeControl formControlName="status">
+                    <option value="A">Ativo</option>
+                    <option value="I">Inativo</option>
+                </select>
+            </mat-form-field>
+
+        </div>
+
+        <div class="div-buttons">
+            <button mat-raised-button color="primary" type="submit">Gravar</button>
+            <button mat-raised-button color="accent" class="button-voltar" (click)="voltarListagem()">Voltar</button>
+        </div>
+
+
+    </form>
+</div>

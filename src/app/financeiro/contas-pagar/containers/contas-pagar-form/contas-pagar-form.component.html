@@ -1,0 +1,81 @@
+<div class="form-container">
+    <form [formGroup]="contasPagarForm" (submit)="onSubmit()">
+
+        <div class="row">
+
+            <mat-form-field appearance="fill" class="form-field col-md-3">
+                <mat-label>Data de Lançamento</mat-label>
+                <input matInput [matDatepicker]="data_lancamento" formControlName="data_lancamento">
+                <mat-datepicker-toggle matSuffix [for]="data_lancamento"></mat-datepicker-toggle>
+                <mat-datepicker #data_lancamento></mat-datepicker>
+            </mat-form-field>
+
+            <mat-form-field class="form-field col-md-3">
+                <mat-label>Descrição</mat-label>
+                <input matInput formControlName="descricao">
+            </mat-form-field>
+
+            <mat-form-field class="form-field col-md-3">
+                <mat-label>Plano de Contas</mat-label>
+                <select matNativeControl formControlName="id_plano_conta">
+                    <option *ngFor="let planoConta of planoConta$ | async">
+                        {{planoConta.descricao}}
+                     </option>
+                </select>
+            </mat-form-field>
+
+            <mat-form-field class="form-field col-md-3">
+                <mat-label>Ocorrência</mat-label>
+                <select matNativeControl formControlName="ocorrencia">
+                    <option value="U">Única</option>
+                    <option value="P">Parcelada/Recorrente</option>
+                </select>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill" class="form-field col-md-3">
+                <mat-label>Data de Vencimento</mat-label>
+                <input matInput [matDatepicker]="data_vencimento" formControlName="data_vencimento">
+                <mat-datepicker-toggle matSuffix [for]="data_vencimento"></mat-datepicker-toggle>
+                <mat-datepicker #data_vencimento></mat-datepicker>
+            </mat-form-field>
+
+            <mat-form-field class="form-field col-md-3">
+                <mat-label>Forma de pagamento</mat-label>
+                <select matNativeControl formControlName="forma_pagamento">
+                    <option value="Boleto">Boleto Bancário</option>
+                    <option value="Credito">Cartão de Crédito</option>
+                    <option value="Debito">Cartão de Débito</option>
+                    <option value="Cheque">Cheque</option>
+                    <option value="Dinheiro">Dinheiro Á Vista</option>
+                </select>
+            </mat-form-field>
+
+
+            <mat-form-field class="form-field col-md-3">
+                <mat-label>Valor</mat-label>
+                <input 
+                    matInput 
+                    formControlName="valor_conta"
+                    currencyMask [options]=" { prefix: '', thousands: '.', decimal: ',', allowNegative: false }">
+            </mat-form-field>
+
+            <mat-form-field class="form-field col-md-3">
+                <mat-label>Pagamento quitado</mat-label>
+                <select matNativeControl formControlName="pagamento">
+                    <option value="N">Não</option>
+                    <option value="S">Sim</option>
+                </select>
+            </mat-form-field>
+
+            <mat-form-field class="form-fiel col-md-12">
+                <mat-label>Observação:</mat-label>
+                <textarea matInput formControlName="observacao"></textarea>
+            </mat-form-field>
+        </div>
+
+        <div class="div-buttons">
+            <button mat-raised-button color="primary" type="submit">Gravar</button>
+            <button mat-raised-button color="accent" class="button-voltar" (click)="voltarListagem()">Voltar</button>
+        </div>
+    </form>
+</div>

@@ -1,0 +1,35 @@
+<table mat-table [dataSource]="usuarios" class="mat-elevation-z8">
+
+    <ng-container matColumnDef="id_usuario">
+      <th class="text-center" mat-header-cell *matHeaderCellDef> Código </th>
+      <td class="text-center" mat-cell *matCellDef="let element"> {{element.id_usuario}} </td>
+    </ng-container>
+  
+    <ng-container matColumnDef="nome">
+      <th class="text-center" mat-header-cell *matHeaderCellDef> Nome </th>
+      <td class="text-center" mat-cell *matCellDef="let element"> {{element.nome}} </td>
+    </ng-container>
+  
+    <ng-container matColumnDef="email">
+      <th class="text-center" mat-header-cell *matHeaderCellDef> Email </th>
+      <td class="text-center" mat-cell *matCellDef="let element"> {{element.email}} </td>
+    </ng-container>
+  
+    <ng-container matColumnDef="acoes">
+      <th class="text-center" mat-header-cell *matHeaderCellDef> Ações </th>
+      <td class="text-center" mat-cell *matCellDef="let element">
+        <button mat-icon-button color="primary" (click)="editar.emit(element.id_usuario)">
+          <mat-icon>search</mat-icon>
+        </button>
+        <button mat-icon-button color="warn" (click)="remover.emit(element.id_usuario)">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+  
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+  
+  
+  

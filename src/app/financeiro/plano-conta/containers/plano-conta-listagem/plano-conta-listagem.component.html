@@ -1,0 +1,11 @@
+<div>
+    <app-totalizador [adicaoRegistros]="true" (cliqueBotao)="facade.acessarRotaCadastro()"
+        (totalRegistros)="facade.quantidadeRegistros$">
+
+    </app-totalizador>
+
+    <h2>Listagem de Plano de contas</h2>
+    <app-plano-conta-list [planoConta]="facade.planoConta$ | async" (editar)="facade.acessarRotaEdicao($event)"
+        (remover)="facade.excluir($event)">
+    </app-plano-conta-list>
+</div>

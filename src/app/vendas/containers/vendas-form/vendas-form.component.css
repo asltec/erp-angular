@@ -1,0 +1,9 @@
+.card-generico{
+    margin-top: 15px;
+}
+
+.form-observacao{
+    display: flex; 
+    flex-direction: column; 
+    height: 50%;
+}

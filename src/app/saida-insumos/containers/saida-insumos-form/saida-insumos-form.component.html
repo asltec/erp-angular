@@ -1,0 +1,45 @@
+<div class="form-container">
+    <form [formGroup]="saidaInsumoForm" (submit)="onSubmit()">
+
+        <div class="row">
+
+            <mat-form-field appearance="fill" class="form-field col-md-3">
+                <mat-label>Data Saída</mat-label>
+                <input matInput [matDatepicker]="data_saida" formControlName="data_saida">
+                <mat-datepicker-toggle matSuffix [for]="data_saida"></mat-datepicker-toggle>
+                <mat-datepicker #data_saida></mat-datepicker>
+            </mat-form-field>
+
+
+            <mat-form-field class="form-field col-md-3">
+                <mat-label>Insumos</mat-label>
+                <select matNativeControl formControlName="id_insumo">
+                    <option *ngFor="let insumo of insumos$ | async"[value]="insumo.id_insumo">
+                        {{insumo.descricao}}
+                    </option>
+                    
+                </select>
+            </mat-form-field>
+
+            <mat-form-field class="form-field col-md-3">
+                <mat-label>Quantidade</mat-label>
+                <input matInput formControlName="quantidade">
+            </mat-form-field>
+
+
+            <mat-form-field class="form-field col-md-3">
+                <mat-label>Valor Unitário</mat-label>
+                <input matInput formControlName="valor_unitario">
+            </mat-form-field>
+
+        </div>
+
+        <div class="div-buttons">
+            <button mat-raised-button color="primary" type="submit">Gravar</button>
+            <button mat-raised-button color="accent" class="button-voltar" (click)="voltarListagem()">Voltar</button>
+        </div>
+
+
+    </form>
+</div>
+

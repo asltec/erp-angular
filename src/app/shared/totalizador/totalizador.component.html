@@ -1,0 +1,27 @@
+<div class="pull-right total-container" id="totalizador">
+    <span *ngIf="botaoVoltar" class="totalizador-back totalizador add-cursor-pointer" (click)="voltarParaLink()"
+        tooltip="Voltar" placement="placementTooltip">
+        <div class="btn-magnify">
+            <i class="fa fa-mail-reply"></i>
+        </div>
+    </span>
+
+    <span *ngIf="refreshRegistros" class="totalizador-refr totalizador add-cursor-pointer" (click)="atualizar.emit()"
+        tooltip="labelBotaoAtualizacao" placement="placementTooltip">
+        <div class="btn-rotate">
+            <i class="fa fa-refresh"></i>
+        </div>
+    </span>
+
+    <span *ngIf="adicaoRegistros" class="btn btn-info add-cursor-pointer" (click)="cliqueBotao.emit()"
+        tooltip="labelBotaoAdicao" placement="placementTooltip" id="addRegistro">
+        <div class="btn-magnify">
+            <i class="fa fa-plus"></i>
+        </div>
+    </span>
+
+    <ng-template #totalNumero>
+        <span placement="placementTooltip" class="totalizador totalizador-add" tooltip="Totalizador de registros">
+            Total: {{qtdRegistros}}
+        </span>
+    </ng-template>

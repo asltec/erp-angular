@@ -1,0 +1,16 @@
+
+    <app-totalizador 
+        [adicaoRegistros]="true" 
+        (cliqueBotao)="facade.acessarRotaCadastro()"
+        (totalRegistros)="facade.quantidadeRegistros$">
+
+    </app-totalizador>
+    <h2>Listagem de Contas à Receber</h2>
+    <div>
+        <app-contas-receber-list 
+            [contasReceber]="facade.contasReceber$ | async"
+            (editar)="facade.acessarRotaEdicao($event)"
+            (remover)="facade.excluir($event)">
+        </app-contas-receber-list>
+    </div>
+

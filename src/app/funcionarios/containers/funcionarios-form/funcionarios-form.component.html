@@ -1,0 +1,106 @@
+<div class="form-container">
+    <form [formGroup]="funcionarioForm" (submit)="onSubmit()">
+
+        <div class="row">
+
+            <mat-form-field class="form-field col-md-4">
+                <mat-label>Nome</mat-label>
+                <input matInput formControlName="nome">
+                <mat-error>
+                    Nome Obrigatório
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="form-field col-md-4">
+                <mat-label>Cpf</mat-label>
+                <input matInput formControlName="cpf">
+            </mat-form-field>
+
+            <mat-form-field class="form-field col-md-4">
+                <mat-label>Rg</mat-label>
+                <input matInput formControlName="rg">
+            </mat-form-field>
+
+            <mat-form-field class="form-field col-md-4">
+                <mat-label>Sexo</mat-label>
+                <select matNativeControl formControlName="sexo">
+                    <option value="M">Masculino</option>
+                    <option value="F">Feminino</option>
+                </select>
+            </mat-form-field>
+
+            <mat-form-field class="form-field col-md-4">
+                <mat-label>Tipo</mat-label>
+                <select matNativeControl formControlName="tipo">
+                    <option value="O">Operacional</option>
+                    <option value="G">Gerência</option>
+                </select>
+            </mat-form-field>
+
+            <mat-form-field class="form-field col-md-4">
+                <mat-label>Status</mat-label>
+                <select matNativeControl formControlName="status">
+                    <option value="A">Ativo</option>
+                    <option value="I">Inativo</option>
+                </select>
+            </mat-form-field>
+
+            <mat-form-field class="form-field col-md-4">
+                <mat-label>Endereço</mat-label>
+                <input matInput formControlName="endereco">
+            </mat-form-field>
+
+            <mat-form-field class="form-field col-md-1">
+                <input matInput formControlName="numero">
+            </mat-form-field>
+
+            <mat-form-field class="form-field col-md-4">
+                <mat-label>Bairro</mat-label>
+                <input matInput formControlName="bairro">
+            </mat-form-field>
+
+            <mat-form-field class="form-field col-md-3">
+                <mat-label>Cep</mat-label>
+                <input matInput formControlName="cep">
+            </mat-form-field>
+
+            <mat-form-field class="form-field col-md-4">
+                <mat-label>Cidade</mat-label>
+                <input matInput formControlName="cidade">
+            </mat-form-field>
+
+            <mat-form-field class="form-field col-md-4">
+                <mat-label>Uf</mat-label>
+                <select matNativeControl formControlName="uf">
+                    <option></option>
+                    <option *ngFor="let estado of estados">
+                        {{estado.descricao}}
+                    </option>
+                </select>
+            </mat-form-field>
+
+            <mat-form-field class="form-field col-md-4">
+                <mat-label>celular</mat-label>
+                <input matInput formControlName="celular">
+                <mat-error>
+                   Celular Obrigatório
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="form-field col-md-12">
+                <mat-label>Email</mat-label>
+                <input type="email" matInput formControlName="email">
+                <mat-error>
+                    Email Obrigatório
+                </mat-error>
+            </mat-form-field>
+
+        </div>
+
+        <div class="div-buttons">
+            <button mat-raised-button color="primary" type="submit">Gravar</button>
+            <button mat-raised-button color="accent" class="button-voltar" (click)="voltarListagem()">Voltar</button>
+        </div>
+
+    </form>
+</div>

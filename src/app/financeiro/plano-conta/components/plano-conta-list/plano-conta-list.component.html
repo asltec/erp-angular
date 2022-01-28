@@ -1,0 +1,34 @@
+<table mat-table [dataSource]="planoConta" class="mat-elevation-z8">
+
+    <ng-container matColumnDef="id_plano_conta">
+        <th class="text-center" mat-header-cell *matHeaderCellDef> Código </th>
+        <td class="text-center" mat-cell *matCellDef="let element"> {{element.id_plano_conta}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="conta">
+        <th class="text-center" mat-header-cell *matHeaderCellDef> Conta </th>
+        <td class="text-center" mat-cell *matCellDef="let element"> {{element.conta}} </td>
+      </ng-container>
+
+      
+      <ng-container matColumnDef="descricao">
+        <th class="text-center" mat-header-cell *matHeaderCellDef> Descrição </th>
+        <td class="text-center" mat-cell *matCellDef="let element"> {{element.descricao}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="acoes">
+        <th class="text-center" mat-header-cell *matHeaderCellDef> Ações </th>
+        <td class="text-center" mat-cell *matCellDef="let element"> 
+          <button mat-icon-button color="primary" (click)="editar.emit(element.id_plano_conta)">
+            <mat-icon>search</mat-icon>
+          </button>
+          <button mat-icon-button color="warn" (click)="remover.emit(element.id_plano_conta)">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </td>
+      </ng-container>
+
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>

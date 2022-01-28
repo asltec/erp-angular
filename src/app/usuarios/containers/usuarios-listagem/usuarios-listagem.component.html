@@ -1,0 +1,13 @@
+<app-totalizador [adicaoRegistros]="true" (cliqueBotao)="facade.acessarRotaCadastro()"
+    (totalRegistros)="facade.quantidadeRegistros$">
+
+</app-totalizador>
+
+<div>
+    <h2>Listagem de Usuarios</h2>
+    <app-usuarios-list 
+        [usuarios]="facade.usuarios$ | async"
+        (editar)="facade.acessarRotaEdicao($event)"
+        (remover)="facade.excluir($event)">
+    </app-usuarios-list>
+</div>

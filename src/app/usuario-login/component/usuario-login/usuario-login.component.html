@@ -1,0 +1,40 @@
+<div class="app-body">
+    <main class="main d-flex align-items-center">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 mx-auto">
+                    <div class="card-group">
+                        <div class="card p-4">
+                            <div class="card-body">
+                                <form [formGroup]="loginUsuarioForm" (ngSubmit)="onSubmit()">
+                                    <h1>Login</h1>
+                                    <mat-form-field>
+                                        <input matInput type="email" placeholder="Email" formControlName="email">
+                                        <mat-error >
+                                            O campo email é obrigatório
+                                        </mat-error>
+                                    </mat-form-field>
+
+                                    <mat-form-field>
+                                        <input matInput type="password" placeholder="Senha" formControlName="senha"
+                                            required>
+                                        <mat-error>
+                                            Informe uma senha válida
+                                        </mat-error>
+                                    </mat-form-field>
+
+                                    <div class="row">
+                                        <div class="col-6">
+                                            <button mat-raised-button color="primary">Login</button>
+                                        </div>
+
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</div>

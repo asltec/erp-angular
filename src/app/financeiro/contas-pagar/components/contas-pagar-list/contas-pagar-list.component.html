@@ -1,0 +1,45 @@
+<table mat-table [dataSource]="contasPagar" class="mat-elevation-z8">
+
+  <ng-container matColumnDef="id_conta_pagar">
+    <th class="text-center" mat-header-cell *matHeaderCellDef> Código </th>
+    <td class="text-center" mat-cell *matCellDef="let element"> {{element.id_conta_pagar}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="descricao">
+    <th class="text-center" mat-header-cell *matHeaderCellDef> Descrição </th>
+    <td class="text-center" mat-cell *matCellDef="let element"> {{element.descricao}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="ocorrencia">
+    <th class="text-center" mat-header-cell *matHeaderCellDef> Ocorrência </th>
+    <td class="text-center" mat-cell *matCellDef="let element"> {{element.ocorrencia}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="valor_conta">
+    <th class="text-center" mat-header-cell *matHeaderCellDef> Valor Conta </th>
+    <td class="text-center" mat-cell *matCellDef="let element"> {{element.valor_conta | currency : 'R$'}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="data_vencimento">
+    <th class="text-center" mat-header-cell *matHeaderCellDef> Data Vencimento </th>
+    <td class="text-center" mat-cell *matCellDef="let element"> {{element.data_vencimento | momentPipe: 'DD/MM/YYYY'}}
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="acoes">
+    <th class="text-center" mat-header-cell *matHeaderCellDef> Ações </th>
+    <td class="text-center" mat-cell *matCellDef="let element">
+      <button mat-icon-button color="primary" (click)="editar.emit(element.id_conta_pagar)">
+        <mat-icon>search</mat-icon>
+      </button>
+      <button mat-icon-button color="warn" (click)="remover.emit(element.id_conta_pagar)">
+        <mat-icon>delete</mat-icon>
+      </button>
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+
+

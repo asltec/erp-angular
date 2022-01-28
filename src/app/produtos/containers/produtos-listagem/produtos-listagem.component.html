@@ -1,0 +1,17 @@
+<div>
+    <app-totalizador 
+        [adicaoRegistros]="true"
+        (cliqueBotao)="facade.acessarRotaCadastro()"
+        (totalRegistros)="facade.quantidadeRegistros$">
+
+    </app-totalizador>
+    <h2>Listagem Produtos</h2>
+    <div>
+
+        <app-produtos-list 
+        [produtos]="facade.produtos$ | async"
+        (editar)="facade.acessarRotaEdicao($event)"
+        (remover)="facade.excluir($event)">
+        </app-produtos-list>
+    </div>
+</div>

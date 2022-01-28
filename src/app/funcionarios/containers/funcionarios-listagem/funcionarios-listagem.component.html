@@ -1,0 +1,19 @@
+<div>
+    <app-totalizador 
+        [adicaoRegistros]="true"
+        (cliqueBotao)="facade.acessarRotaCadastro()"
+        (totalRegistros)="facade.quantidadeRegistros$">
+    </app-totalizador>
+
+    <h2>Listagem de Funcionários</h2>
+    <div>
+        <app-funcionarios-list 
+        [funcionarios]="facade.funcionarios$ | async"
+        (editar)="facade.acessarRotaEdicao($event)"
+        (remover)="facade.excluir($event)"
+        (detalhes)="openDialog($event)">
+        </app-funcionarios-list>
+    </div>
+</div>
+
+<app-funcionario-detalhes *ngIf="isModal"></app-funcionario-detalhes>

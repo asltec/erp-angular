@@ -1,0 +1,58 @@
+<div class="form-container">
+    <form [formGroup]="insumoForm" (submit)="onSubmit()">
+
+        <div class="row">
+
+            <mat-form-field class="form-field col-md-3">
+                <mat-label>Descrição</mat-label>
+                <input matInput formControlName="descricao">
+            </mat-form-field>
+
+            <mat-form-field class="form-field col-md-3">
+                <mat-label>Grupo Insumos</mat-label>
+                <select matNativeControl formControlName="id_grupo_insumo">
+                    <option *ngFor="let grupoInsumo of grupoInsumos$ | async"[value]="grupoInsumo.id_grupo_insumo">
+                        {{grupoInsumo.descricao}}
+                    </option>
+                    
+                </select>
+            </mat-form-field>
+
+            <mat-form-field class="form-field col-md-3">
+                <mat-label>Status</mat-label>
+                <select matNativeControl formControlName="status">
+                    <option value="A">Ativo</option>
+                    <option value="I">Inativo</option>
+                </select>
+            </mat-form-field>
+
+            <mat-form-field class="form-field col-md-3">
+                <mat-label>Estoque</mat-label>
+                <input matInput formControlName="quantidade">
+            </mat-form-field>
+
+            <mat-form-field class="form-field col-md-4">
+                <mat-label>Estoque Max</mat-label>
+                <input matInput formControlName="estoque_maximo">
+            </mat-form-field>
+
+            <mat-form-field class="form-field col-md-4">
+                <mat-label>Estoque Min</mat-label>
+                <input matInput formControlName="estoque_minimo">
+            </mat-form-field>
+
+            <mat-form-field class="form-field col-md-4">
+                <mat-label>Valor Unitário</mat-label>
+                <input matInput formControlName="valor_unitario">
+            </mat-form-field>
+
+        </div>
+
+        <div class="div-buttons">
+            <button mat-raised-button color="primary" type="submit">Gravar</button>
+            <button mat-raised-button color="accent" class="button-voltar" (click)="voltarListagem()">Voltar</button>
+        </div>
+
+
+    </form>
+</div>

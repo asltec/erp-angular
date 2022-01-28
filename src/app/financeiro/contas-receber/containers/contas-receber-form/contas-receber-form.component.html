@@ -1,0 +1,62 @@
+<div class="form-container">
+    <form [formGroup]="contasReceberForm" (submit)="onSubmit()">
+
+        <div class="row">
+
+            <mat-form-field appearance="fill" class="form-field col-md-4">
+                <mat-label>Data Lançamento</mat-label>
+                <input matInput [matDatepicker]="data_lancamento" formControlName="data_lancamento">
+                <mat-datepicker-toggle matSuffix [for]="data_lancamento"></mat-datepicker-toggle>
+                <mat-datepicker #data_lancamento></mat-datepicker>
+            </mat-form-field>
+
+
+            <mat-form-field class="form-field col-md-4">
+                <mat-label>Clientes</mat-label>
+                <select matNativeControl formControlName="id_cliente">
+                    <option *ngFor="let cliente of clientes$ | async"[value]="cliente.id_cliente">
+                       {{cliente.id_cliente}} - {{cliente.nome}}
+                    </option>
+                    
+                </select>
+            </mat-form-field>
+
+            <mat-form-field class="form-field col-md-4">
+                <mat-label>Descrição</mat-label>
+                <input matInput formControlName="descricao">
+            </mat-form-field>
+
+
+            <mat-form-field class="form-field col-md-4">
+                <mat-label>Valor</mat-label>
+                <input currencyMask matInput formControlName="valor_conta">
+            </mat-form-field>
+
+            <mat-form-field appearance="fill" class="form-field col-md-4">
+                <mat-label>Data Vencimento</mat-label>
+                <input matInput [matDatepicker]="data_vencimento" formControlName="data_vencimento">
+                <mat-datepicker-toggle matSuffix [for]="data_vencimento"></mat-datepicker-toggle>
+                <mat-datepicker #data_vencimento></mat-datepicker>
+            </mat-form-field>
+
+
+            <mat-form-field class="form-field col-md-4">
+                <mat-label>Status</mat-label>
+                <select matNativeControl formControlName="status">
+                    <option value="Pendente">Pendente</option>
+                    <option value="Baixada">Baixada</option>
+                </select>
+            </mat-form-field>
+
+            <mat-form-field class="form-fiel col-md-12">
+                <mat-label>Observação:</mat-label>
+                <textarea matInput formControlName="observacao"></textarea>
+            </mat-form-field>
+        </div>
+
+        <div class="div-buttons">
+            <button mat-raised-button color="primary" type="submit">Gravar</button>
+            <button mat-raised-button color="accent" class="button-voltar" (click)="voltarListagem()">Voltar</button>
+        </div>
+    </form>
+</div>

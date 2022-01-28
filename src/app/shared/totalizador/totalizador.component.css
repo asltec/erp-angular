@@ -1,0 +1,30 @@
+.add-cursor-pointer{
+    cursor: pointer;
+}
+
+.totalizador {
+    box-sizing: content-box;
+    visibility: visible;
+    padding: 2px;
+    font-family: Arial, verdana, tahoma;
+    font-size: 13px;
+    font-weight: bold;
+    color: white;
+    text-align: center;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
+    background: #0277bd;
+    min-width: 20px;
+    max-width: 300px;
+    height: 20px;
+    line-height: 20px;
+    border: 3px solid #0277bd;
+    float: left;
+    border-left-width: 6px;
+    border-right-width: 6px;
+  }
+
+  .totalizador-add {
+    color: white;
+    background-color: #5cb85c;
+    border-color: #5cb85c;
+  }

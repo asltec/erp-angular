@@ -1,0 +1,43 @@
+<table mat-table [dataSource]="clientes" class="mat-elevation-z8">
+
+  <ng-container matColumnDef="id_cliente">
+      <th class="text-center" mat-header-cell *matHeaderCellDef> Código </th>
+      <td class="text-center" mat-cell *matCellDef="let element"> {{element.id_cliente}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="nome">
+      <th class="text-center" mat-header-cell *matHeaderCellDef> Nome/Razão </th>
+      <td class="text-center" mat-cell *matCellDef="let element"> {{element.nome}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="cnpj">
+      <th class="text-center" mat-header-cell *matHeaderCellDef> CNPJ </th>
+      <td class="text-center" mat-cell *matCellDef="let element"> {{element.cnpj}} </td>
+    </ng-container>
+  
+
+    <ng-container matColumnDef="status">
+      <th class="text-center" mat-header-cell *matHeaderCellDef> Status </th>
+      <td class="text-center" mat-cell *matCellDef="let element"> {{element.status}}</td>
+    </ng-container>
+  
+    <ng-container matColumnDef="acoes">
+      <th class="text-center" mat-header-cell *matHeaderCellDef> Ações </th>
+      <td class="text-center" mat-cell *matCellDef="let element"> 
+        <button mat-icon-button color="primary" (click)="editar.emit(element.id_cliente)">
+          <mat-icon>edit</mat-icon>
+        </button>
+        <button mat-icon-button color="warn" (click)="remover.emit(element.id_cliente)">
+          <mat-icon>delete</mat-icon>
+        </button>
+        <button mat-icon-button (click)="detalhes.emit(element)">
+          <mat-icon>search</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+
+
+
